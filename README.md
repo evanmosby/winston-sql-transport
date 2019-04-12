@@ -1,16 +1,12 @@
 # winston-sql-transport
 
-[![CircleCI](https://circleci.com/gh/ofkindness/winston-sql-transport/tree/master.svg?style=svg)](https://circleci.com/gh/ofkindness/winston-sql-transport/tree/master)
-[![NPM version](https://img.shields.io/npm/v/winston-sql-transport.svg)](https://npmjs.org/package/winston-sql-transport)
-[![Dependency Status](https://david-dm.org/ofkindness/winston-sql-transport.svg?theme=shields.io)](https://david-dm.org/ofkindness/winston-sql-transport)
-[![NPM Downloads](https://img.shields.io/npm/dm/winston-sql-transport.svg)](https://npmjs.org/package/winston-sql-transport)
-
 Universal [winston](https://www.npmjs.com/package/winston) SQL transport.
 
 Supports:
 - MySQL
 - PostgreSQL
 - SQL Server
+- SQLite
 
 via [knex](http://knexjs.org/) library.
 
@@ -21,7 +17,7 @@ via [knex](http://knexjs.org/) library.
   $ npm install winston-sql-transport
 ```
 
-and then install the appropriate database library: [pg](https://github.com/brianc/node-postgres) for PostgreSQL, [mysql](https://github.com/felixge/node-mysql) for MySQL or MariaDB or [mssql](https://github.com/patriksimek/node-mssql) for MSSQL.
+and then install the appropriate database library: [pg](https://github.com/brianc/node-postgres) for PostgreSQL, [mysql](https://github.com/felixge/node-mysql) for MySQL / MariaDB, [mssql](https://github.com/patriksimek/node-mssql) for MSSQL or [sqlite](https://github.com/mapbox/node-sqlite3)..
 
 ## Options
 
@@ -29,15 +25,25 @@ See the default values used:
 
 ```js
 const options = {
+  client: 'database_driver', // replace with sqlite3, mysql, etc
   tableName: 'winston_logs',
 };
+```
+
+For SQLite3, the options should also have:
+```js
+client: 'sqlite3',
+connection: {
+  filename: 'sqlite_database.file'
+},
+useNullAsDefault: true
 ```
 
 ## Usage
 
 ```js
 const { Logger } = require('winston');
-const { SQLTransport } = require('./../lib/winston-sql-transport');
+const { SQLTransport } = require('winston-sql-transport');
 
 const logger = new Logger({
   transports: [
@@ -52,7 +58,7 @@ module.exports = logger;
 ## Logging
 
 ```js
-logger.log('info', 'message', {});
+logger.log('info', 'message');
 ```
 
 ## Querying Logs
