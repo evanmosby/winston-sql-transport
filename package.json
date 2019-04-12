@@ -10,7 +10,7 @@
     "circular-json": "^0.4.0",
     "knex": "^0.14.2",
     "moment": "^2.19.3",
-    "winston": "^2.4.0"
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^4.13.0",
@@ -28,7 +28,9 @@
     "knex",
     "postgresql",
     "mysql",
-    "mssql"
+    "mssql",
+    "sqlite"
+    
   ],
   "author": "Andrei Tretyakov <andrei.tretyakov@gmail.com>",
   "license": "MIT"
