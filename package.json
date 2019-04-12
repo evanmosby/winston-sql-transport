@@ -7,7 +7,6 @@
     "test": "vows --spec test/*-test.js"
   },
   "dependencies": {
-    "circular-json": "^0.4.0",
     "knex": "^0.14.2",
     "moment": "^2.19.3",
     "winston": "^3.0.0"
@@ -30,7 +29,6 @@
     "mysql",
     "mssql",
     "sqlite"
-    
   ],
   "author": "Andrei Tretyakov <andrei.tretyakov@gmail.com>",
   "license": "MIT"
